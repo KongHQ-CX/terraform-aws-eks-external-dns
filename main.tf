@@ -1,5 +1,5 @@
 data "aws_route53_zone" "this" {
-  zone_id         = var.zone_id
+  zone_id      = var.zone_id
   private_zone = var.zone_id == "private" ? true : false
 }
 
@@ -7,7 +7,7 @@ module "this_role" {
   count  = var.create_role ? 1 : 0
   source = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
 
-  role_name                     = "eks_dns"
+  role_name                     = "${var.cluster_name}-eks-dns"
   attach_external_dns_policy    = var.create_role
   external_dns_hosted_zone_arns = [data.aws_route53_zone.this.arn]
   oidc_providers = {
@@ -53,7 +53,7 @@ resource "helm_release" "dns" {
   }
 
   set {
-    name = "policy"
+    name  = "policy"
     value = "sync"
   }
 
@@ -68,7 +68,7 @@ resource "helm_release" "dns" {
   }
 
   set {
-    name = "serviceAccount.create"
+    name  = "serviceAccount.create"
     value = "false"
   }
 
