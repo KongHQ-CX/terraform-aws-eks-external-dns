@@ -40,7 +40,7 @@ variable "service_account" {
 variable "namespace" {
   description = "The name of the Kubernetes namespace to use for external DNS"
   type        = string
-  default     = "default"
+  default     = "kube-system"
 }
 
 variable "zone_id" {
