@@ -35,7 +35,7 @@ resource "kubernetes_service_account" "service-account" {
 resource "helm_release" "dns" {
   count      = var.create_deployment ? 1 : 0
   name       = "external-dns"
-  repository = "https://charts.bitnami.com"
+  repository = "https://charts.bitnami.com/bitnami"
   chart      = "external-dns"
   namespace  = var.namespace
   depends_on = [
