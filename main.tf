@@ -59,7 +59,7 @@ resource "helm_release" "dns" {
 
   set {
     name  = "txtOwnerId"
-    value = var.zone_id
+    value = var.owner_id
   }
 
   set {

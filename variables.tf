@@ -48,6 +48,11 @@ variable "zone_id" {
   type        = string
 }
 
+variable "owner_id" {
+  description = "A name that identifies this instance of ExternalDNS"
+  type        = string
+}
+
 variable "zone_type" {
   description = "The type of rotue 53 zone to use with external DNS"
   type        = string
