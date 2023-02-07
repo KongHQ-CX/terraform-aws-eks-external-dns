@@ -91,4 +91,15 @@ resource "helm_release" "dns" {
     name  = "podSecurityContext.runAsUser"
     value = "0"
   }
+
+  set {
+    name  = "sources"
+    value = ["crd", "service", "ingress"]
+  }
+
+  set {
+    name  = "crd.create"
+    value = "true"
+  }
+
 }
