@@ -93,8 +93,18 @@ resource "helm_release" "dns" {
   }
 
   set {
-    name  = "sources"
-    value = ["crd", "service", "ingress"]
+    name  = "sources[0]"
+    value = "crd"
+  }
+
+  set {
+    name  = "sources[1]"
+    value = "service"
+  }
+
+  set {
+    name  = "sources[2]"
+    value = "ingress"
   }
 
   set {
